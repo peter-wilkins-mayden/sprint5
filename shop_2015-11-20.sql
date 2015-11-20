@@ -7,7 +7,7 @@
 #
 # Host: 192.168.20.56 (MySQL 5.6.25)
 # Database: shop
-# Generation Time: 2015-11-20 11:51:40 +0000
+# Generation Time: 2015-11-20 12:06:05 +0000
 # ************************************************************
 
 
@@ -20,26 +20,21 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-# Dump of table product
+# Dump of table address
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `product`;
+DROP TABLE IF EXISTS `address`;
 
-CREATE TABLE `product` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cost_price` decimal(7,2) NOT NULL,
-  `retail_price` decimal(7,2) NOT NULL,
-  `stock_level` int(11) NOT NULL,
-  `description` varchar(500) DEFAULT NULL,
-  `name` varchar(100) NOT NULL,
-  `vat_rate` decimal(4,2) NOT NULL DEFAULT '20.00',
-  `image` blob,
-  `size` varchar(10) DEFAULT NULL,
-  `category_id` varchar(50) NOT NULL,
-  `weight_grams` int(7) DEFAULT NULL,
-  `height_cm` int(7) DEFAULT NULL,
-  `width_cm` int(7) DEFAULT NULL,
-  `length_cm` int(7) DEFAULT NULL,
+CREATE TABLE `address` (
+  `id` int(11) unsigned NOT NULL,
+  `user_id` int(11) unsigned NOT NULL,
+  `organisation` varchar(60) DEFAULT NULL,
+  `address_line_1` varchar(50) NOT NULL,
+  `address_line_2` varchar(60) DEFAULT NULL,
+  `town` varchar(35) NOT NULL,
+  `county` varchar(20) NOT NULL,
+  `post_code` varchar(7) NOT NULL,
+  `country` varchar(50) NOT NULL,
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_last_updated` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
