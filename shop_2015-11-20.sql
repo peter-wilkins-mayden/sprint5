@@ -1,13 +1,15 @@
 # ************************************************************
 # Sequel Pro SQL dump
-# Version 4096
+# Version 4499
 #
 # http://www.sequelpro.com/
-# http://code.google.com/p/sequel-pro/
+# https://github.com/sequelpro/sequelpro
 #
 # Host: 192.168.20.56 (MySQL 5.6.25)
 # Database: shop
-# Generation Time: 2015-11-20 12:11:41 +0000
+
+# Generation Time: 2015-11-20 12:09:32 +0000
+
 # ************************************************************
 
 
@@ -20,10 +22,10 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-# Dump of table address
-# ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `address`;
+# Dump of table order
+# ------------------------------------------------------------
+DROP TABLE IF EXISTS `order`;
 
 CREATE TABLE `address` (
   `id` int(11) unsigned NOT NULL,
@@ -40,16 +42,14 @@ CREATE TABLE `address` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
-
 # Dump of table order
 # ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `order`;
 
 CREATE TABLE `order` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) unsigned NOT NULL,
   `status` varchar(100) NOT NULL,
   `order_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `retail_price` decimal(7,2) NOT NULL,
@@ -57,15 +57,13 @@ CREATE TABLE `order` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
-
 # Dump of table product
 # ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `product`;
 
 CREATE TABLE `product` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `cost_price` decimal(7,2) NOT NULL,
   `retail_price` decimal(7,2) NOT NULL,
   `stock_level` int(11) NOT NULL,
@@ -82,17 +80,14 @@ CREATE TABLE `product` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
-
 # Dump of table review
 # ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `review`;
 
 CREATE TABLE `review` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) unsigned NOT NULL,
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_last_updated` datetime DEFAULT CURRENT_TIMESTAMP,
   `description` varchar(500) DEFAULT NULL,
@@ -100,7 +95,22 @@ CREATE TABLE `review` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+# Dump of table supplier
+# ------------------------------------------------------------
 
+DROP TABLE IF EXISTS `supplier`;
+
+CREATE TABLE `supplier` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `contact_name` varchar(150) NOT NULL,
+  `email` varchar(320) NOT NULL,
+  `telephone` varchar(12) NOT NULL,
+  `website` varchar(320) DEFAULT NULL,
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_last_updated` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 # Dump of table user
 # ------------------------------------------------------------
@@ -108,13 +118,13 @@ CREATE TABLE `review` (
 DROP TABLE IF EXISTS `user`;
 
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
   `password` char(40) NOT NULL,
   `salt` char(40) NOT NULL,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
-  `email` varchar(320) DEFAULT NULL,
+  `email` varchar(320) NOT NULL DEFAULT '',
   `telephone` varchar(12) DEFAULT NULL,
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_last_updated` datetime DEFAULT CURRENT_TIMESTAMP,
@@ -131,6 +141,7 @@ CREATE TABLE `order_item` (
 `price_per_item` INT(11),
 `item_total` INT(11)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 
 
