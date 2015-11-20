@@ -131,6 +131,22 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `order_item`;
+CREATE TABLE `order_item` (
+`id` INT(11) NOT NULL AUTO_INCREMENT,
+`order_id` INT(11) NOT NULL,
+`product_id` INT(11) NOT NULL,
+`quantity` INT(11) NOT NULL,
+`discount` INT(11),
+`price_per_item` INT(11),
+`item_total` INT(11)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+
+
+
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
