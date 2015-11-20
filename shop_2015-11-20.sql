@@ -143,10 +143,24 @@ CREATE TABLE `order_item` (
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+# Dump of table payment
+# ------------------------------------------------------------
 
+DROP TABLE IF EXISTS `payment`;
 
-
-
+CREATE TABLE `payment` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) unsigned NOT NULL,
+  `order_id` int(11) unsigned NOT NULL,
+  `bank_name` VARCHAR(50),
+  `name_on_card` VARCHAR(50) NOT NULL,
+  `credit_card_number` CHAR(4) NOT NULL,
+  `start_date` CHAR(7) NOT NULL,
+  `expiry_date` CHAR(7) NOT NULL,
+  `security_code` CHAR(3) NOT NULL,
+  `sort_code` CHAR(8) NOT NULL,
+  PRIMARY KEY (`id`)
+);
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
