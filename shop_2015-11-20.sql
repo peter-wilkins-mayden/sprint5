@@ -7,7 +7,7 @@
 #
 # Host: 192.168.20.56 (MySQL 5.6.25)
 # Database: shop
-# Generation Time: 2015-11-20 11:10:33 +0000
+# Generation Time: 2015-11-20 11:39:51 +0000
 # ************************************************************
 
 
@@ -26,7 +26,7 @@
 DROP TABLE IF EXISTS `product`;
 
 CREATE TABLE `product` (
-  `product_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `cost_price` decimal(7,2) NOT NULL,
   `retail_price` decimal(7,2) NOT NULL,
   `stock_level` int(11) NOT NULL,
@@ -42,8 +42,29 @@ CREATE TABLE `product` (
   `length_cm` int(7) DEFAULT NULL,
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_last_updated` datetime DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`product_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+# Dump of table user
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `user`;
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `password` char(40) NOT NULL,
+  `salt` char(40) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `email` varchar(320) DEFAULT NULL,
+  `telephone` varchar(12) DEFAULT NULL,
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_last_updated` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 
