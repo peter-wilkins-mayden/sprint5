@@ -7,7 +7,9 @@
 #
 # Host: 192.168.20.56 (MySQL 5.6.25)
 # Database: shop
+
 # Generation Time: 2015-11-20 12:09:32 +0000
+
 # ************************************************************
 
 
@@ -19,6 +21,26 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+
+
+# Dump of table order
+# ------------------------------------------------------------
+DROP TABLE IF EXISTS `order`;
+
+CREATE TABLE `address` (
+  `id` int(11) unsigned NOT NULL,
+  `user_id` int(11) unsigned NOT NULL,
+  `organisation` varchar(60) DEFAULT NULL,
+  `address_line_1` varchar(50) NOT NULL,
+  `address_line_2` varchar(60) DEFAULT NULL,
+  `town` varchar(35) NOT NULL,
+  `county` varchar(20) NOT NULL,
+  `post_code` varchar(7) NOT NULL,
+  `country` varchar(50) NOT NULL,
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_last_updated` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 # Dump of table order
 # ------------------------------------------------------------
@@ -34,8 +56,6 @@ CREATE TABLE `order` (
   `order_total` decimal(4,2) NOT NULL DEFAULT '20.00',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
 
 # Dump of table product
 # ------------------------------------------------------------
@@ -57,12 +77,8 @@ CREATE TABLE `product` (
   `height_cm` int(7) DEFAULT NULL,
   `width_cm` int(7) DEFAULT NULL,
   `length_cm` int(7) DEFAULT NULL,
-  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `date_last_updated` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
 
 # Dump of table review
 # ------------------------------------------------------------
@@ -70,17 +86,14 @@ CREATE TABLE `product` (
 DROP TABLE IF EXISTS `review`;
 
 CREATE TABLE `review` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) unsigned NOT NULL,
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_last_updated` datetime DEFAULT CURRENT_TIMESTAMP,
   `description` varchar(500) DEFAULT NULL,
   `rating` tinyint(2) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
 
 # Dump of table supplier
 # ------------------------------------------------------------
@@ -98,8 +111,6 @@ CREATE TABLE `supplier` (
   `date_last_updated` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
 
 # Dump of table user
 # ------------------------------------------------------------
@@ -119,9 +130,6 @@ CREATE TABLE `user` (
   `date_last_updated` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
