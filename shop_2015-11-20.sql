@@ -23,9 +23,9 @@
 
 
 
-# Dump of table order
+# Dump of table address
 # ------------------------------------------------------------
-DROP TABLE IF EXISTS `order`;
+DROP TABLE IF EXISTS `address`;
 
 CREATE TABLE `address` (
   `id` int(11) unsigned NOT NULL,
