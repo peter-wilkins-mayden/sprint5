@@ -14,6 +14,18 @@ CREATE TABLE `product` (
   `height_cm` int(7) DEFAULT NULL,
   `width_cm` int(7) DEFAULT NULL,
   `length_cm` int(7) DEFAULT NULL,
+
+DROP TABLE IF EXISTS `address`;
+CREATE TABLE `address` (
+  `id` int(11) unsigned NOT NULL,
+  `user_id` int(11) unsigned NOT NULL,
+  `organisation` varchar(60) DEFAULT NULL,
+  `address_line_1` varchar(50) NOT NULL,
+  `address_line_2` varchar(60) DEFAULT NULL,
+  `town` varchar(35) NOT NULL,
+  `county` varchar(20) NOT NULL,
+  `post_code` varchar(7) NOT NULL,
+  `country` varchar(50) NOT NULL,
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_last_updated` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -30,6 +42,7 @@ CREATE TABLE `review` (
   `rating` tinyint(2) NOT NULL,
    PRIMARY KEY (`id`)
 );
+
 DROP TABLE IF EXISTS `order`;
 CREATE TABLE `order` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
