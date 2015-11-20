@@ -40,7 +40,7 @@ CREATE TABLE `address` (
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_last_updated` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 # Dump of table order
 # ------------------------------------------------------------
@@ -78,7 +78,7 @@ CREATE TABLE `product` (
   `width_cm` int(7) DEFAULT NULL,
   `length_cm` int(7) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 # Dump of table review
 # ------------------------------------------------------------
