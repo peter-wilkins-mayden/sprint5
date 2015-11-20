@@ -57,6 +57,15 @@ CREATE TABLE `review` (
   `rating` tinyint(2) NOT NULL,
    PRIMARY KEY (`id`)
 );
+CREATE TABLE `order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `status` varchar(100) NOT NULL,
+  `order_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `retail_price` decimal(7,2) NOT NULL,
+  `order_total` decimal(4,2) NOT NULL DEFAULT '20.00',
+  PRIMARY KEY (`id`)
+);
 
 
 
