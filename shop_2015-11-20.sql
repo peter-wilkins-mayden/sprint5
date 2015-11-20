@@ -139,7 +139,7 @@ CREATE TABLE `order_item` (
 `quantity` INT(11) NOT NULL,
 `discount` INT(11),
 `price_per_item` INT(11),
-`item_total` INT(11)
+`item_total` INT(11),
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
