@@ -1,13 +1,13 @@
 # ************************************************************
 # Sequel Pro SQL dump
-# Version 4499
+# Version 4096
 #
 # http://www.sequelpro.com/
-# https://github.com/sequelpro/sequelpro
+# http://code.google.com/p/sequel-pro/
 #
 # Host: 192.168.20.56 (MySQL 5.6.25)
 # Database: shop
-# Generation Time: 2015-11-20 11:10:33 +0000
+# Generation Time: 2015-11-20 11:36:04 +0000
 # ************************************************************
 
 
@@ -20,29 +20,20 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-# Dump of table product
+# Dump of table review
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `product`;
+DROP TABLE IF EXISTS `review`;
 
-CREATE TABLE `product` (
-  `product_id` int(11) NOT NULL AUTO_INCREMENT,
-  `cost_price` decimal(7,2) NOT NULL,
-  `retail_price` decimal(7,2) NOT NULL,
-  `stock_level` int(11) NOT NULL,
-  `description` varchar(500) DEFAULT NULL,
-  `name` varchar(100) NOT NULL,
-  `vat_rate` decimal(4,2) NOT NULL DEFAULT '20.00',
-  `image` blob,
-  `size` varchar(10) DEFAULT NULL,
-  `category_id` varchar(50) NOT NULL,
-  `weight_grams` int(7) DEFAULT NULL,
-  `height_cm` int(7) DEFAULT NULL,
-  `width_cm` int(7) DEFAULT NULL,
-  `length_cm` int(7) DEFAULT NULL,
+CREATE TABLE `review` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_last_updated` datetime DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`product_id`)
+  `description` varchar(500) DEFAULT NULL,
+  `rating` tinyint(2) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
