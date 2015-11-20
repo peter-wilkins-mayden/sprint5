@@ -1,13 +1,15 @@
 # ************************************************************
 # Sequel Pro SQL dump
-# Version 4499
+# Version 4096
 #
 # http://www.sequelpro.com/
-# https://github.com/sequelpro/sequelpro
+# http://code.google.com/p/sequel-pro/
 #
 # Host: 192.168.20.56 (MySQL 5.6.25)
 # Database: shop
+
 # Generation Time: 2015-11-20 11:39:51 +0000
+
 # ************************************************************
 
 
@@ -20,10 +22,10 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-# Dump of table product
+# Dump of table review
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `product`;
+DROP TABLE IF EXISTS `review`;
 
 CREATE TABLE `product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -44,6 +46,19 @@ CREATE TABLE `product` (
   `date_last_updated` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+CREATE TABLE `review` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_last_updated` datetime DEFAULT CURRENT_TIMESTAMP,
+  `description` varchar(500) DEFAULT NULL,
+  `rating` tinyint(2) NOT NULL,
+   PRIMARY KEY (`id`)
+);
 
 
 
