@@ -78,7 +78,7 @@ CREATE TABLE `product` (
   `width_cm` int(7) DEFAULT NULL,
   `length_cm` int(7) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8  ;
 
 # Dump of table review
 # ------------------------------------------------------------
