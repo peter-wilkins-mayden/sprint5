@@ -57,16 +57,31 @@ WHERE category SOUNDS LIKE (:category);
 /*9. Recommend products to me which were bought by people who also purchased my last item.*/
 SELECT product.name
 FROM product
-JOIN order_item
-ON product_id = product.id
-JOIN order
-ON order_id = order.id
-JOIN user
-ON user_id = user.id;
+  JOIN order_item
+    ON product_id = product.id
+  JOIN `order`
+    ON order_id = order.id
+  JOIN user
+    ON user_id = user.id
+GROUP BY user_id, order_id
+HAVING MAX(order_item.id) AND MAX(order_id);
+/*TODO - FINISH THIS LIL PUP
 
 
-/*10. Show my items in a particular category, between price range, with an average review rating of 3-4 stars.
-
+/*10. Show my items in a particular category, between price range, with an average review rating of 3-4 stars.*/
+SELECT product.name, product.retail_price, review.rating
+FROM product
+  JOIN review
+    ON review.product_id=product.id
+  JOIN order_item
+    ON order_item.product_id = product.id
+  JOIN `order`
+    ON order_id = order.id
+  JOIN user
+    ON order.user_id = user.id
+  WHERE user.id = 2
+    AND product.retail_price BETWEEN 60 AND 120
+    AND review.rating BETWEEN 3 AND 4;
 
 # Front - end
 
