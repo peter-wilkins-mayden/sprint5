@@ -22,6 +22,7 @@
 
 # Dump of table address
 # ------------------------------------------------------------
+USE shop;
 
 DROP TABLE IF EXISTS `address`;
 
@@ -97,7 +98,7 @@ CREATE TABLE `payment` (
   `security_code` char(3) NOT NULL,
   `sort_code` char(8) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 
