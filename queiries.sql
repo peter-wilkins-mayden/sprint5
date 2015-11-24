@@ -43,13 +43,29 @@ ON order_id = order.id
 WHERE order_id = 1;
 
 /*7. Show all products which are currently on offer (ordered by %age off) [if you have implemented offers]*/
-SELECT product.name, product.discount_price/product.retail_price*100 AS 'percentage'
+SELECT product.name, ((product.retail_price-product.discount_price)/product.retail_price)*100 AS 'percentage'
+FROM product
+WHERE discount_price !=0
+ORDER BY percentage DESC;
+
+/*8. Search for all items in a particular category matching (or closely matching) my search key word(s)*/
+SELECT product.name, product.category
+FROM product
+WHERE category SOUNDS LIKE (:category);
+/*GROUP BY product.name;*/
+
+/*9. Recommend products to me which were bought by people who also purchased my last item.*/
+SELECT product.name
+FROM product
+JOIN order_item
+ON product_id = product.id
+JOIN order
+ON order_id = order.id
+JOIN user
+ON user_id = user.id;
 
 
-
-/*8. Search for all items in a particular category matching (or closely matching) my search key word(s)
-9. Recommend products to me which were bought by people who also purchased my last item.
-10. Show my items in a paricular category, between price range, with an average review rating of 3-4 stars.
+/*10. Show my items in a particular category, between price range, with an average review rating of 3-4 stars.
 
 
 # Front - end
