@@ -29,9 +29,14 @@ GROUP BY product.name
 ORDER BY AVG(rating);
 
 /*5. List My Orders, showing image, description, order status, order_id, order_date, delivery_address & total cost.*/
-SELECT
-/*6. List all items in a particular order showing photo, description, Quantity, cost per item, line total.
-7. Show all products which are currently on offer (ordered by %age off) [if you have implemented offers]
+SELECT image, description, order_status, order_id, order_date, delivery_address, total cost
+FROM `order`
+WHERE user_id=:user;
+/*6. List all items in a particular order showing photo, description, Quantity, cost per item, line total.*/
+SELECT product.image, product.description, order_item.quantity,
+  order_item.cost_per_item, SUM(order_item.item_total)
+FROM product JOIN
+/*7. Show all products which are currently on offer (ordered by %age off) [if you have implemented offers]
 8. Search for all items in a particular category matching (or closely matching) my search key word(s)
 9. Recommend products to me which were bought by people who also purchased my last item.
 10. Show my items in a paricular category, between price range, with an average review rating of 3-4 stars.
