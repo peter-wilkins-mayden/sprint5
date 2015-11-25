@@ -119,8 +119,21 @@ ORDER BY productCount DESC;
 
 
 
-/*10. Show my items in a particular category, between price range, with an average review rating of 3-4 stars.
 
+/*10. Show my items in a particular category, between price range, with an average review rating of 3-4 stars.*/
+SELECT product.name, product.retail_price, review.rating
+FROM product
+  JOIN review
+    ON review.product_id=product.id
+  JOIN order_item
+    ON order_item.product_id = product.id
+  JOIN `order`
+    ON order_id = order.id
+  JOIN user
+    ON order.user_id = user.id
+  WHERE user.id = 2
+    AND product.retail_price BETWEEN 60 AND 120
+    AND review.rating BETWEEN 3 AND 4;
 
 # Front - end
 
