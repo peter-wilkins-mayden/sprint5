@@ -11,13 +11,6 @@ try {
     echo 'Connection failed: ' . $e->getMessage();
 }
 
-/*$username = $_POST['username'];
-$password = $_POST['password'];
-$firstname = $_POST['firstname'];
-$lastname = $_POST['lastname'];
-$email = $_POST['email'];
-$mobile = $_POST['mobile'];*/
-
 $sql = "INSERT INTO user (
                         `username`,
                         `password`,
@@ -35,13 +28,11 @@ $sql = "INSERT INTO user (
 
 $result = $pdo->prepare($sql);
 $result->bindParam(':username', $_POST['username'], PDO::PARAM_STR);
-$result->bindParam(':password,', $_POST['password'], PDO::PARAM_STR);
+$result->bindParam(':password', $_POST['password'], PDO::PARAM_STR);
 $result->bindParam(':first_name', $_POST['firstname'], PDO::PARAM_STR);
 $result->bindParam(':last_name', $_POST['lastname'], PDO::PARAM_STR);
 $result->bindParam(':email', $_POST['email'], PDO::PARAM_STR);
 $result->bindParam(':mobile', $_POST['mobile'], PDO::PARAM_INT);
 $result->execute();
 
-
-
-echo 'testing';
+?>
