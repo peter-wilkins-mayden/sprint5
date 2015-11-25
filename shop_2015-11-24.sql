@@ -1,15 +1,18 @@
 # ************************************************************
 # Sequel Pro SQL dump
-# Version 4499
+# Version 4096
 #
 # http://www.sequelpro.com/
-# https://github.com/sequelpro/sequelpro
+# http://code.google.com/p/sequel-pro/
 #
 # Host: 192.168.20.56 (MySQL 5.6.25)
+
 # Generation Time: 2015-11-20 12:09:32 +0000
+# Database: shop
 
 # Dump of table address
 # ------------------------------------------------------------
+USE shop;
 
 DROP TABLE IF EXISTS `address`;
 
@@ -82,7 +85,7 @@ CREATE TABLE `payment` (
   `security_code` char(3) NOT NULL,
   `sort_code` char(8) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 # Dump of table product
 # ------------------------------------------------------------
@@ -99,7 +102,7 @@ CREATE TABLE `product` (
   `vat_rate` decimal(4,2) unsigned NOT NULL DEFAULT '20.00',
   `image` blob,
   `size` varchar(10) DEFAULT NULL,
-  `category_id` varchar(50) NOT NULL,
+  `category` varchar(50) NOT NULL DEFAULT '',
   `weight_grams` int(7) unsigned DEFAULT NULL,
   `height_cm` int(7) unsigned DEFAULT NULL,
   `width_cm` int(7) unsigned DEFAULT NULL,
@@ -107,6 +110,20 @@ CREATE TABLE `product` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `product` WRITE;
+/*!40000 ALTER TABLE `product` DISABLE KEYS */;
+
+INSERT INTO `product` (`id`, `cost_price`, `retail_price`, `stock_level`, `description`, `name`, `vat_rate`, `image`, `size`, `category`, `weight_grams`, `height_cm`, `width_cm`, `length_cm`)
+VALUES
+	(1,50.00,100.00,87,'little squirrel pants for the modern squirrel','snazzy squirrel pants',20.00,NULL,'small','christmas',340,2,24,48),
+	(2,52.00,104.00,67,'medium squirrel pants for the modern squirrel','snazzy squirrel pants',20.00,NULL,'medium','christmas',440,4,30,56),
+	(3,54.00,108.00,88,'large squirrel pants for the modern squirrel','snazzy squirrel pants',20.00,NULL,'large','christmas',540,6,36,66),
+	(4,34.00,68.00,57,'little fluffy squirrel pants','fluffy squirrel pants',20.00,NULL,'small','spring',342,2,24,48),
+	(5,36.00,72.00,55,'medium fluffy squirrel pants','fluffy squirrel pants',20.00,NULL,'medium','spring',348,4,26,56),
+	(6,38.00,76.00,99,'large fluffy squirrel pants','fluffy squirrel pants',20.00,NULL,'large','spring',400,6,28,66);
+
+/*!40000 ALTER TABLE `product` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table product_supplier
