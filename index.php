@@ -20,28 +20,35 @@ VALUES (:username, :salt, :password, :first_name,
 <html>
 
 <head>
-
+<title>Insert User</title>
 
 </head>
 
 <body>
 
 <form method="post" action="session.php">
-    Enter a username:
-    <input type="text" name="username">
-    <br>
-    Enter a password:
-    <input type="text" name="password">
-    Enter a first name:
-    <input type="text" name="firstname">
-    Enter a last name:
-    <input type="text" name="lastname">
-    Enter a email:
-    <input type="text" name="email">
-    Enter a mobile:
-    <input type="text" name="mobile">
-    Submit User:
-    <input type="submit">
+    <div>
+        <label>Enter a username:</label>
+        <input type="text" name="username">
+    </div>
+    <div>
+        <label>Enter a password:</label>
+        <input type="text" name="password"></div>
+    <div>
+        <label>Enter a first name:</label>
+        <input type="text" name="firstname"></div>
+    <div>
+        <label>Enter a last name:</label>
+        <input type="text" name="lastname"></div>
+    <div>
+        <label>Enter a email:</label>
+        <input type="text" name="email"></div>
+    <div>
+        <label>Enter a mobile:</label>
+        <input type="text" name="mobile"></div>
+    <div>
+        <label>Submit User:</label>
+        <input type="submit"></div>
 </form>
 
 

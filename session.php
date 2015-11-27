@@ -6,7 +6,7 @@ $password = 'AWSLiveShop';
 
 try {
     $pdo = new PDO($dsn, $user, $password);
-    echo 'Connected!';
+//    echo 'Connected!';
 } catch (PDOException $e) {
     echo 'Connection failed: ' . $e->getMessage();
 }
@@ -35,4 +35,16 @@ $result->bindParam(':email', $_POST['email'], PDO::PARAM_STR);
 $result->bindParam(':mobile', $_POST['mobile'], PDO::PARAM_INT);
 $result->execute();
 
-?>
+if (!$result) {
+    $arr = $result->errorInfo();
+    print_r($arr);
+    ?>
+
+
+    <div class="feedback - message">Failed!<a href="index.php">Go Back</a> and try again</div>
+    <?php
+} else {
+    ?>
+    <div class="feedback - message">Successful!<a href="index.php">Enter another user</a></div>
+<?php
+}
